@@ -1,4 +1,5 @@
 from tkinter import *
+import addbook
 from datetime import date
 
 today = date.today()
@@ -37,7 +38,7 @@ class App(object):
 
         self.add_button_icon = PhotoImage(file='icons/add_book.png')
         self.add_button = Button(
-            self.bottom, text='        Add Books           ', font='roboto 12 bold')
+            self.bottom, text='        Add Books           ', font='roboto 12 bold', command=self.openAddBook)
         self.add_button.config(
             image=self.add_button_icon, compound=LEFT)
         self.add_button.place(x=220, y=100)
@@ -50,6 +51,9 @@ class App(object):
         self.list_button.config(
             image=self.list_button_icon, compound=LEFT)
         self.list_button.place(x=220, y=200)
+
+    def openAddBook(self):
+        newbook = addbook.AddBook()
 
 
 def main():
