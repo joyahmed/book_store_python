@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import sqlite3
 
 con = sqlite3.connect('book_management.db')
@@ -10,6 +11,7 @@ class AddBook(Toplevel):
         Toplevel.__init__(self)
         self.geometry('750x420+550+200')
         self.title = ('Add Book')
+        self.iconbitmap("icons/icon.ico")
         self.resizable(False, False)
 
         # Frames
@@ -41,7 +43,6 @@ class AddBook(Toplevel):
         self.name_label.place(x=80, y=60)
 
         self.name_entry = Entry(self.bottom_frame, width=30, bd=4)
-        #self.name_entry.insert(0, 'Please enter book name')
         self.name_entry.place(x=170, y=60)
 
         # Author
@@ -70,5 +71,28 @@ class AddBook(Toplevel):
 
         # Button
         button = Button(self.bottom_frame, text='Save Book',
-                        font='roboto 12 bold', fg='white', bg='#5C5CFF', padx=20, pady=10)
+                        font='roboto 12 bold', fg='white', bg='#5C5CFF', padx=20, pady=10, command=self.addBook)
         button.place(x=300, y=180)
+
+    def addBook(self):
+        name = self.name_entry.get()
+        author = self.author_entry.get()
+        price = self.price_entry.get()
+        quantity = self.quantity_entry.get()
+
+        if(name and author and price and quantity != ""):
+            try:
+                query = "INSERT INTO 'books' (name, author, price, quantity) VALUES(?, ?, ?, ?)"
+                cur.execute(query, (name, author, price, quantity))
+                con.commit()
+                self.withdraw()
+                messagebox.showinfo(
+                    'Success', 'New book added to database successfully', icon='info')
+
+            except:
+                messagebox.showerror(
+                    'Error', 'Couldn\'t add to database!', icon='warning')
+                self.withdraw()
+        else:
+            messagebox.showerror(
+                'Error', 'You must fill up all fields!', icon='warning')

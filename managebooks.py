@@ -12,6 +12,7 @@ class ManageBooks(Toplevel):
         Toplevel.__init__(self)
         self.geometry('650x650+620+200')
         self.title = ('Manage Books')
+        self.iconbitmap("icons/icon.ico")
         self.resizable(False, False)
 
         # Frames
