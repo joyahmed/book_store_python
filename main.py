@@ -35,7 +35,7 @@ class App(object):
             self.top, text='Date: ' + str(date), font='roboto 12 bold', bg='white', fg='#5C5CFF')
         self.date_label.place(x=490, y=10)
 
-        # Add Button
+        # Update Button
 
         self.add_button_icon = PhotoImage(file='icons/add_book.png')
         self.add_button = Button(
