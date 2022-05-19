@@ -9,10 +9,11 @@ cur = con.cursor()
 class AddBook(Toplevel):
     def __init__(self):
         Toplevel.__init__(self)
-        self.geometry('750x420+550+200')
+        self.geometry('755x420+550+200')
         self.title = ('Add Book')
         self.iconbitmap("icons/icon.ico")
         self.resizable(False, False)
+        self.attributes("-topmost", True)
 
         # Frames
 
@@ -28,10 +29,10 @@ class AddBook(Toplevel):
         self.top_image = PhotoImage(file='icons/addbook.png')
         self.top_image_label = Label(
             self.top, image=self.top_image, bg='white')
-        self.top_image_label.place(x=120, y=10)
+        self.top_image_label.place(x=110, y=10)
         self.heading = Label(
             self.top, text='Add Book', font='roboto 15 bold', fg='#5C5CFF', bg='white')
-        self.heading.place(x=350, y=60)
+        self.heading.place(x=330, y=60)
 
         ########################################################################
 
@@ -39,35 +40,35 @@ class AddBook(Toplevel):
 
         # Name
         self.name_label = Label(
-            self.bottom_frame, text='Name     ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
-        self.name_label.place(x=80, y=60)
+            self.bottom_frame, text='  Name      ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
+        self.name_label.place(x=60, y=60)
 
-        self.name_entry = Entry(self.bottom_frame, width=30, bd=4)
-        self.name_entry.place(x=170, y=60)
+        self.name_entry = Entry(self.bottom_frame, width=35, bd=4)
+        self.name_entry.place(x=140, y=60)
 
         # Author
         self.author_label = Label(
-            self.bottom_frame, text='Author   ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
+            self.bottom_frame, text='  Author        ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
         self.author_label.place(x=390, y=60)
 
-        self.author_entry = Entry(self.bottom_frame, width=30, bd=4)
-        self.author_entry.place(x=480, y=60)
+        self.author_entry = Entry(self.bottom_frame, width=35, bd=4)
+        self.author_entry.place(x=470, y=60)
 
         # Price
         self.price_label = Label(
-            self.bottom_frame, text='Price      ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
-        self.price_label.place(x=80, y=120)
+            self.bottom_frame, text='  Price       ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
+        self.price_label.place(x=60, y=120)
 
-        self.price_entry = Entry(self.bottom_frame, width=30, bd=4)
-        self.price_entry.place(x=170, y=120)
+        self.price_entry = Entry(self.bottom_frame, width=35, bd=4)
+        self.price_entry.place(x=140, y=120)
 
         # Quantity
         self.quantity_label = Label(
-            self.bottom_frame, text='Quantity', font='roboto 12 bold', fg='white', bg='#8A8AFF')
+            self.bottom_frame, text='  Quantity ', font='roboto 12 bold', fg='white', bg='#8A8AFF')
         self.quantity_label.place(x=390, y=120)
 
-        self.quantity_entry = Entry(self.bottom_frame, width=30, bd=4)
-        self.quantity_entry.place(x=480, y=120)
+        self.quantity_entry = Entry(self.bottom_frame, width=35, bd=4)
+        self.quantity_entry.place(x=470, y=120)
 
         # Button
         button = Button(self.bottom_frame, text='Save Book',
